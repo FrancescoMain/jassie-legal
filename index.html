@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informativa privacy — Jassie</title>
+<meta name="description" content="Informativa privacy dell'app Jassie: quali dati raccoglie, perché, e a chi vengono trasmessi.">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --fg: #1c1a17;
+    --muted: #5d5850;
+    --rule: #e2ddd4;
+    --accent: #7a5a2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161513;
+      --fg: #ece8e1;
+      --muted: #a29b90;
+      --rule: #2f2c28;
+      --accent: #d3ad6a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--bg);
+    color: var(--fg);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 44rem; margin: 0 auto; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+  h2 {
+    font-size: 1.2rem; margin: 2.8rem 0 .8rem; letter-spacing: -.005em;
+    padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  }
+  h3 { font-size: 1rem; margin: 1.8rem 0 .5rem; color: var(--accent); }
+  p, li { margin: 0 0 1rem; }
+  ul { padding-left: 1.2rem; }
+  .updated { color: var(--muted); font-size: .9rem; margin-bottom: 2.5rem; }
+  strong { font-weight: 600; }
+  a { color: var(--accent); }
+  .table-wrap { overflow-x: auto; margin: 0 0 1rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+  footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .88rem; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Informativa privacy di Jassie</h1>
+<p class="updated">Ultimo aggiornamento: 31 luglio 2026</p>
+
+<h2>Chi tratta i tuoi dati</h2>
+<p>Il titolare del trattamento è Francesco Cesarano, con sede in Strada Statale 145 n. 97,
+80045 Pompei (NA), Italia. Per qualsiasi richiesta:
+<a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>.</p>
+
+<h2>Cosa raccogliamo, e perché</h2>
+
+<h3>Il tuo account</h3>
+<p>Quando ti registri raccogliamo <strong>l'indirizzo email</strong> e, al primo avvio,
+<strong>nome</strong>, <strong>strumento</strong> (chitarra, piano o voce) e, se vuoi
+indicarlo, il tuo <strong>handle Instagram</strong> — quest'ultimo è facoltativo e puoi
+lasciarlo vuoto.</p>
+<p>Se accedi con Google riceviamo da Google l'indirizzo email associato all'account, non la
+tua password.</p>
+<p>Le password sono gestite da Supabase e non transitano né vengono conservate in forma
+leggibile.</p>
+<p>Serve a farti avere un profilo che ti segue tra un accesso e l'altro. Base giuridica:
+l'esecuzione del servizio che ci hai chiesto.</p>
+
+<h3>Come suoni</h3>
+<p>Durante una take l'app <strong>registra l'audio dal microfono</strong> e lo invia al
+nostro servizio di analisi per riconoscere le note eseguite.</p>
+<p><strong>Quella registrazione non viene conservata.</strong> Il servizio la scrive in un
+file temporaneo, la analizza e la cancella subito dopo, anche quando l'analisi fallisce. Non
+finisce in un archivio, non viene riascoltata da nessuno, non serve ad addestrare modelli.</p>
+<p>Restano invece i <strong>risultati</strong>: quali note hai suonato rispetto a quelle
+attese, il punteggio, il livello raggiunto. Sono ciò che rende Jassie un percorso di studio
+invece di una serie di esercizi scollegati.</p>
+<p>Il microfono si attiva solo quando avvii una take. Il telefono te lo chiede la prima
+volta e puoi revocare il permesso quando vuoi dalle impostazioni — senza microfono l'app
+resta utilizzabile, ma non può valutare l'esecuzione.</p>
+
+<h3>Statistiche d'uso — solo se acconsenti</h3>
+<p>Se dai il consenso raccogliamo eventi anonimi su come usi l'app: apertura, frase
+generata, take registrata, esito. Sono eventi da un catalogo chiuso, con proprietà numeriche
+o a scelta fissa: <strong>non contengono testo libero</strong>, quindi né nomi, né email, né
+messaggi di errore del server.</p>
+<p>Senza consenso non parte nulla: non è una preferenza che spegne l'invio a valle, è un
+blocco a monte. Puoi cambiare idea quando vuoi dalle impostazioni.</p>
+<p>Base giuridica: il tuo consenso.</p>
+
+<h2>A chi vengono trasmessi</h2>
+<p>Jassie non vende i tuoi dati e non li cede a terzi per finalità di marketing. Si appoggia
+a questi fornitori, ciascuno per una funzione precisa:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Fornitore</th><th>Cosa fa</th><th>Dove</th></tr></thead>
+  <tbody>
+    <tr><td>Supabase</td><td>account, profilo, risultati delle take</td><td>Irlanda (UE)</td></tr>
+    <tr><td>Fly.io</td><td>analisi dell'audio e generazione delle frasi</td><td>Francoforte (UE)</td></tr>
+    <tr><td>PostHog</td><td>statistiche d'uso, solo previo consenso</td><td>Unione Europea</td></tr>
+    <tr><td>Mistral AI</td><td>genera le frasi musicali da esercitare</td><td>Unione Europea</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Le richieste inviate a Mistral contengono solo parametri musicali — tonalità, tempo,
+livello di difficoltà. Non contengono dati che ti riguardano.</p>
+
+<h2>Per quanto tempo</h2>
+<p>Il profilo e i risultati restano finché tieni l'account. L'audio delle take, come detto,
+non viene conservato affatto. Gli eventi statistici sono conservati da PostHog secondo i
+suoi tempi di ritenzione.</p>
+<p>Se vuoi cancellare l'account scrivici a
+<a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>:
+eliminiamo profilo e risultati.</p>
+
+<h2>I tuoi diritti</h2>
+<p>Puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne il
+trattamento o riceverli in formato leggibile da una macchina. Dove trattiamo sulla base del
+consenso — le statistiche d'uso — puoi revocarlo in qualsiasi momento dalle impostazioni
+dell'app, senza che questo tocchi ciò che è avvenuto prima.</p>
+<p>Scrivi a <a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>.
+Se ritieni che non ti abbiamo risposto come dovremmo, puoi rivolgerti al Garante per la
+protezione dei dati personali.</p>
+
+<h2>Età minima</h2>
+<p>Jassie non è pensata per chi ha meno di 16 anni e non raccogliamo consapevolmente dati di
+minori di quell'età. Se ci accorgiamo che è successo, cancelliamo.</p>
+
+<h2>Fase di test</h2>
+<p>Jassie è oggi distribuita tramite TestFlight a un gruppo ristretto di persone invitate.
+Apple, in questa fase, raccoglie per proprio conto dati sull'installazione e sugli eventuali
+crash secondo la propria informativa, sulla quale non abbiamo controllo.</p>
+
+<h2>Se questa informativa cambia</h2>
+<p>Quando cambierà — per esempio all'introduzione della pubblicità, che comporterà un
+fornitore in più e una richiesta di consenso dedicata — aggiorneremo questa pagina e la data
+in alto.</p>
+
+<footer>Jassie — Jazz Adaptive Study System</footer>
+
+</main>
+</body>
+</html>
