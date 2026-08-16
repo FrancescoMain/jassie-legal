@@ -4,6 +4,7 @@ Documenti legali di [Jassie](https://github.com/FrancescoMain/Jassie), pubblicat
 GitHub Pages.
 
 - `index.html` — informativa privacy
+- `account-deletion.html` — istruzioni e dettagli per eliminare l'account
 
 Questo repo è pubblico per una sola ragione: l'informativa deve stare a un URL raggiungibile
 da chiunque. App Store Connect la richiede per App Privacy, e AdMob non pubblica il messaggio
