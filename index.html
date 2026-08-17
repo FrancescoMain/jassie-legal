@@ -54,7 +54,7 @@
 <main>
 
 <h1>Informativa privacy di Jassie</h1>
-<p class="updated">Ultimo aggiornamento: 16 agosto 2026</p>
+<p class="updated">Ultimo aggiornamento: 17 agosto 2026</p>
 
 <h2>Chi tratta i tuoi dati</h2>
 <p>Il titolare del trattamento è Francesco Cesarano, con sede in Strada Statale 145 n. 97,
@@ -76,13 +76,13 @@ leggibile.</p>
 l'esecuzione del servizio che ci hai chiesto.</p>
 
 <h3>La classifica</h3>
-<p>Dalla classifica gli altri giocatori vedono il tuo <strong>nome</strong>, il tuo
-<strong>strumento</strong>, la tua <strong>esperienza</strong> con il livello che ne deriva, e il tuo
-<strong>punteggio ELO</strong> con il rango che ne deriva. Non vedono il tuo indirizzo email né il
-tuo handle Instagram, che non escono mai dal tuo profilo.</p>
-<p><strong>Puoi toglierti dalla classifica quando vuoi</strong>, da <em>Impostazioni → Mostrami in
-classifica</em>: da quel momento non compari più a nessuno. Dalle stesse impostazioni puoi
-cambiare il nome con cui appari.</p>
+<p>Nella versione Android <code>0.6.0 (7)</code> la schermata Classifica è soltanto un
+messaggio che annuncia la funzione futura: <strong>non mostra nomi, profili, punteggi o
+altri contenuti degli utenti</strong>, e non interroga la classifica sul server. Il tuo
+nome, strumento, esperienza, livello, ELO e rango restano nel tuo profilo e non vengono
+mostrati agli altri giocatori.</p>
+<p>Una versione futura che renda pubblica la classifica richiederà un nuovo aggiornamento
+di questa informativa e delle tutele per i contenuti degli utenti prima dell'attivazione.</p>
 
 <h3>Come suoni</h3>
 <p>Durante una take l'app <strong>registra l'audio dal microfono</strong> e lo invia al
@@ -97,25 +97,49 @@ invece di una serie di esercizi scollegati.</p>
 revocare il permesso quando vuoi dalle impostazioni del telefono — senza microfono l'app resta
 utilizzabile, ma non può valutare l'esecuzione.</p>
 
-<h3>Statistiche d'uso — solo se acconsenti</h3>
-<p>Se dai il consenso raccogliamo eventi anonimi su come usi l'app: apertura, frase
-generata, take registrata, esito. Sono eventi da un catalogo chiuso, con proprietà numeriche
-o a scelta fissa: <strong>non contengono testo libero</strong>, quindi né nomi, né email, né
-messaggi di errore del server.</p>
-<p>Senza consenso non parte nulla: non è una preferenza che spegne l'invio a valle, è un
-blocco a monte. Puoi cambiare idea quando vuoi dalle impostazioni.</p>
-<p>Base giuridica: il tuo consenso.</p>
+<h3>Statistiche d'uso — disattivate nella release Android <code>0.6.0 (7)</code></h3>
+<p>La release Android descritta da questa informativa ha le statistiche d'uso
+<strong>disattivate in modo rigido nella build</strong>: non riceve il flag
+<code>ANALYTICS_ENABLED=true</code> né una chiave progetto PostHog, l'inizializzazione
+automatica nativa è disabilitata e il backend PostHog non viene costruito. Di conseguenza
+la <code>0.6.0 (7)</code> non invia eventi d'uso, UUID, <code>$identify</code> o
+<code>$set</code> a PostHog. La schermata di consenso analytics viene saltata e il relativo
+interruttore non è mostrato nelle Impostazioni, così non raccogliamo una scelta inutile.</p>
+<p>Il codice contiene ancora un'integrazione PostHog <strong>dormiente</strong>, progettata
+per eventi di prodotto pseudonimi provenienti da un catalogo chiuso (senza nome, email,
+handle Instagram, testo libero o messaggi server), più l'evento tecnico
+<code>$identify</code> necessario ad associare l'UUID Supabase. Le catture automatiche,
+GeoIP, preload e telemetria dei feature flag, sondaggi e registrazione sessione sono
+disabilitati nel suo contratto. Questa descrizione non significa che l'integrazione sia
+attiva nella <code>0.6.0 (7)</code>.</p>
+<p>Non la riattiveremo con un semplice flag: l'SDK nativo può conservare una coda su disco
+o un invio già in corso che <code>optOut</code>, <code>disable</code> e <code>reset</code>
+da soli non dimostrano di avere eliminato. Prima di una futura attivazione servono una
+barriera verificabile su Android e iOS, nuovi test end-to-end e un aggiornamento di questa
+informativa e dei controlli di consenso.</p>
 
 <h3>La pubblicità</h3>
-<p>Ogni frase da esercitare si sblocca guardando un <strong>video pubblicitario</strong>
-fornito da <strong>Google AdMob</strong>. È l'unico formato che usiamo: nessun banner,
-nessun annuncio a comparsa, e mai sul pentagramma mentre suoni.</p>
-<p><strong>Prima che il componente pubblicitario si avvii ti chiediamo il consenso</strong>,
-con il modulo di Google (User Messaging Platform) previsto dalla normativa europea. Finché
-non rispondi, il componente non parte.</p>
-<p>Guardando l'annuncio, Google riceve <strong>identificatori del dispositivo e dati sulla
-tua interazione con l'annuncio</strong> (che sia stato mostrato, che tu l'abbia visto per
-intero), secondo la propria informativa, sulla quale non abbiamo controllo.</p>
+<p>Quando non hai già un gettone di generazione disponibile, Jassie ti propone un
+<strong>video pubblicitario con premio</strong> (<em>rewarded</em>) fornito da
+<strong>Google AdMob</strong>. Se lo completi, la conferma lato server accredita il gettone
+usato per chiedere la frase. È l'unico formato che usiamo: nessun banner, nessun annuncio a
+comparsa, e mai sul pentagramma mentre suoni.</p>
+<p>Il server può ripristinare un gettone quando una generazione precedente non si è
+conclusa: un gettone ripristinato permette di chiedere la frase successiva senza mostrare
+un altro annuncio. L'app prova sempre a usare quel gettone prima di proporre un nuovo
+video.</p>
+<p><strong>Prima che il componente pubblicitario si avvii consultiamo il modulo di
+Google</strong> (User Messaging Platform, UMP). L'SDK annunci parte soltanto quando UMP
+restituisce <code>canRequestAds</code>: non deduciamo il permesso dal pulsante premuto. Dopo
+un rifiuto UMP può comunque autorizzare annunci limitati o non personalizzati; un errore al
+primo avvio lascia invece il gate chiuso. Puoi riaprire le preferenze annunci dalle
+Impostazioni quando UMP lo richiede.</p>
+<p>Quando l'SDK è autorizzato, Google può raccogliere e condividere <strong>posizione
+approssimativa derivata dall'indirizzo IP, identificativi del dispositivo o dell'account,
+interazioni con l'app e con l'annuncio e dati diagnostici</strong>, per mostrare e misurare
+gli annunci, analisi e prevenzione frodi/sicurezza/conformità, secondo la propria
+informativa, sulla quale non abbiamo controllo. Jassie non chiede a Google né al telefono
+la posizione GPS.</p>
 <p>Gli trasmettiamo inoltre <strong>l'identificativo interno del tuo account</strong> — un
 codice generato da noi, <strong>non il nome né l'email</strong> — perché Google ce lo
 restituisca insieme alla conferma firmata che il video è stato visto davvero. Senza quel
@@ -124,21 +148,23 @@ una frase.</p>
 <p><strong>Su iPhone e iPad non ti chiediamo il permesso di tracciamento</strong> e non
 usiamo l'identificatore pubblicitario di Apple (IDFA): gli annunci che vedi non sono
 personalizzati su quella base.</p>
-<p>Quando Google non ha alcun annuncio da mostrare, la frase viene generata lo stesso: non
-resti bloccato per una pubblicità che non è arrivata.</p>
+<p>Quando Google restituisce <code>no-fill</code> o un errore prima di mostrare il video,
+Jassie può attivare un percorso di cortesia e provare a generare la frase senza annuncio:
+non resti bloccato per una pubblicità che non è arrivata. Chiudere invece un video
+disponibile prima del premio non sblocca la frase.</p>
 
 <h2>A chi vengono trasmessi</h2>
-<p>Jassie non vende i tuoi dati e non li cede a terzi per finalità di marketing. Si appoggia
-a questi fornitori, ciascuno per una funzione precisa:</p>
+<p>Jassie non vende i tuoi dati; li condivide con i fornitori elencati qui sotto soltanto
+per le funzioni e le finalità dichiarate, inclusa la pubblicità, quando applicabile:</p>
 <div class="table-wrap">
 <table>
   <thead><tr><th>Fornitore</th><th>Cosa fa</th><th>Dove</th></tr></thead>
   <tbody>
     <tr><td>Supabase</td><td>account, profilo, risultati delle take</td><td>Irlanda (UE)</td></tr>
     <tr><td>Fly.io</td><td>analisi dell'audio e generazione delle frasi</td><td>Francoforte (UE)</td></tr>
-    <tr><td>PostHog</td><td>statistiche d'uso, solo previo consenso</td><td>Unione Europea</td></tr>
+    <tr><td>PostHog</td><td>non riceve nuovi dati dalla release Android <code>0.6.0 (7)</code>; eventuali statistiche pseudonime riguardano soltanto build precedenti esplicitamente abilitate</td><td>Unione Europea</td></tr>
     <tr><td>Mistral AI</td><td>genera le frasi musicali da esercitare</td><td>Unione Europea</td></tr>
-    <tr><td>Google AdMob</td><td>mostra il video pubblicitario che sblocca la frase, solo previo consenso</td><td>Stati Uniti e altri paesi, secondo l'informativa di Google</td></tr>
+    <tr><td>Google AdMob</td><td>mostra e misura il video pubblicitario quando UMP restituisce <code>canRequestAds</code>; può trattare IP e posizione approssimativa, identificativi, interazioni e diagnostica</td><td>Stati Uniti e altri paesi, secondo l'informativa di Google</td></tr>
   </tbody>
 </table>
 </div>
@@ -148,15 +174,25 @@ livello di difficoltà. Non contengono dati che ti riguardano.</p>
 <h2>Per quanto tempo</h2>
 <p>Il profilo e i risultati restano finché tieni l'account. L'audio delle take, come detto,
 non viene conservato affatto.</p>
-<p><strong>Puoi eliminare l'account dall'app</strong>, da <em>Impostazioni → Elimina account</em>
-(e dalla schermata di primo accesso, se non l'hai ancora completata). Dopo la conferma spariscono
-profilo, frasi generate, risultati delle take, punteggi ed ELO: è immediato e irreversibile. Le
-copie di sicurezza del database le tiene Supabase come parte del servizio e si rinnovano a
+<p><strong>Puoi eliminare l'account dall'app</strong>, da <em>Impostazioni → Elimina
+account</em> (e dalla schermata di primo accesso, se non l'hai ancora completata). La
+richiesta parte subito ed è irreversibile quando il server la conferma; allora spariscono
+profilo, frasi generate, risultati delle take, punteggi ed ELO. Se la connessione si
+interrompe mentre aspettiamo la risposta, Jassie blocca le altre funzioni e mostra
+<strong>Cancellazione da completare</strong>: connettiti a Internet e riprova. Il nuovo
+tentativo verifica o completa la stessa richiesta.</p>
+<p>La pulizia locale elimina dati e preferenze Jassie associati all'account. Non azzera
+invece le scelte pubblicitarie per dispositivo conservate da Google UMP: non sono associate
+all'account Jassie, restano valide finché UMP non le fa scadere o aggiornare e, quando UMP
+lo richiede, si possono modificare da <em>Impostazioni → Preferenze annunci</em>. Le copie
+di sicurezza del database le tiene Supabase come parte del servizio e si rinnovano a
 rotazione, quindi i dati eliminati spariscono anche da lì man mano che quelle copie vengono
 sostituite; noi non ne conserviamo altre.</p>
-<p><strong>Gli eventi statistici già inviati restano invece presso PostHog</strong>, secondo i suoi
-tempi di ritenzione: sono legati a un codice interno e non contengono nome, email o testo libero.
-Se vuoi che vengano rimossi anche quelli, scrivici a
+<p>La release Android <code>0.6.0 (7)</code> non invia nuovi eventi statistici.
+<strong>Eventuali eventi inviati da una precedente build esplicitamente abilitata restano
+invece presso PostHog</strong>, secondo i suoi tempi di ritenzione: sono pseudonimi, legati
+all'UUID Supabase, e non contengono nome, email o testo libero. Se vuoi che vengano rimossi
+anche quelli, scrivici a
 <a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>.</p>
 <p><strong>Resta anche il registro tecnico degli accessi</strong> tenuto dal servizio di
 autenticazione di Supabase — login, logout, richieste di reimpostazione della password — che può
@@ -170,9 +206,10 @@ risultati.</p>
 
 <h2>I tuoi diritti</h2>
 <p>Puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne il
-trattamento o riceverli in formato leggibile da una macchina. Dove trattiamo sulla base del
-consenso — le statistiche d'uso — puoi revocarlo in qualsiasi momento dalle impostazioni
-dell'app, senza che questo tocchi ciò che è avvenuto prima.</p>
+trattamento o riceverli in formato leggibile da una macchina. La release Android
+<code>0.6.0 (7)</code> non tratta statistiche d'uso e quindi non mostra un consenso
+analytics da modificare; per eventuali eventi provenienti da build precedenti puoi
+esercitare i tuoi diritti scrivendoci.</p>
 <p>Scrivi a <a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>.
 Se ritieni che non ti abbiamo risposto come dovremmo, puoi rivolgerti al Garante per la
 protezione dei dati personali.</p>
@@ -182,25 +219,22 @@ protezione dei dati personali.</p>
 minori di quell'età. Se ci accorgiamo che è successo, cancelliamo.</p>
 
 <h2>Fase di test</h2>
-<p>Jassie è oggi distribuita solo a un gruppo ristretto di persone invitate, su due canali:</p>
-<ul>
-  <li><strong>TestFlight</strong>, per iOS;</li>
-  <li><strong>Google Play</strong>, su una <strong>traccia di test chiusa</strong>, non visibile
-  nel negozio e raggiungibile solo da chi ha ricevuto l'invito.</li>
-</ul>
-<p>In questa fase Apple e Google raccolgono <strong>per proprio conto</strong> dati
-sull'installazione, sul dispositivo e sugli eventuali crash, ciascuno secondo la propria
-informativa e sulla base di un rapporto che intercorre fra te e loro: sono trattamenti sui
-quali non abbiamo controllo e che non passano da noi. Su Google Play l'indirizzo email con
-cui accetti l'invito è visibile a noi come indirizzo invitato alla traccia, perché è così che
-l'invito viene recapitato.</p>
+<p>Jassie è oggi distribuita tramite TestFlight a un gruppo ristretto di persone invitate.
+Su Google Play è stata preparata una traccia di test chiusa con una lista di tester, ma la
+prima release Android non è ancora installabile: questa pagina verrà aggiornata quando
+Google la renderà disponibile.</p>
+<p>Apple raccoglie per proprio conto dati sull'installazione e sugli eventuali crash
+secondo la propria informativa. Google tratta gli indirizzi inseriti nella lista tester per
+recapitare l'accesso alla traccia. Sono trattamenti sui quali non abbiamo controllo e che
+non passano dai servizi di Jassie.</p>
 
 <h2>Se questa informativa cambia</h2>
 <p>Quando cambierà aggiorneremo questa pagina e la data in alto. L'ultimo cambiamento è del
-16 agosto 2026: la sezione «Fase di test» nomina anche Google Play e la traccia di test
-chiusa. Il cambiamento precedente è del 13 agosto 2026: l'introduzione della classifica, che
-pubblica verso gli altri giocatori nome, strumento, esperienza/livello e punteggio ELO/rango.
-Puoi toglierti dalla classifica in ogni momento dalle Impostazioni.</p>
+17 agosto 2026: descrive la preparazione del test chiuso Google Play, chiarisce i dati
+trattati da AdMob e registra che nella build Android <code>0.6.0 (7)</code> sia PostHog sia
+la raccolta del consenso analytics sono disattivati, mentre la Classifica è un teaser
+statico senza contenuti di altri utenti. La versione del 13 agosto descriveva una classifica
+pubblica pianificata; quella funzione non è attiva nella release qui descritta.</p>
 
 <footer>Jassie — Jazz Adaptive Study System</footer>
 
