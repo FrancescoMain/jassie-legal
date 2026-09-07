@@ -7,6 +7,5 @@ GitHub Pages.
 - `account-deletion.html` — istruzioni e dettagli per eliminare l'account
 
 Questo repo è pubblico per una sola ragione: l'informativa deve stare a un URL raggiungibile
-da chiunque. App Store Connect la richiede per App Privacy, e AdMob non pubblica il messaggio
-di consenso senza. La copia sorgente vive in `docs/legal/privacy-policy.md` nel repo
+da chiunque. App Store Connect e Google Play richiedono il relativo URL. La copia sorgente vive in `docs/legal/privacy-policy.md` nel repo
 dell'app: quando cambia lì, va riportata qui.

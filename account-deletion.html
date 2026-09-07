@@ -29,77 +29,43 @@
 </head>
 <body>
 <main>
+
 <h1>Come eliminare il tuo account Jassie</h1>
-<p class="updated">Ultimo aggiornamento: 17 agosto 2026 · App: Jassie — Android
-<code>com.francescomain.jassie</code>; iOS <code>com.jassie.jassie</code></p>
+<p class="updated">Ultimo aggiornamento: 7 settembre 2026</p>
+
+<p><strong>App Android:</strong> Jassie — <code>com.francescomain.jassie</code></p>
+
+<p><strong>App iOS:</strong> Jassie — <code>com.jassie.jassie</code></p>
 
 <h2>Dall'app, in tre passaggi</h2>
-<ol>
-  <li>Apri Jassie e accedi.</li>
-  <li>Vai su <strong>Impostazioni</strong> (l'ingranaggio in alto a destra nella schermata
-  principale) e scegli <strong>Elimina account</strong>.</li>
-  <li>Conferma. La richiesta parte subito ed è irreversibile quando il server la conferma.
-  Se la connessione si interrompe mentre aspettiamo la risposta, Jassie blocca le altre
-  funzioni e mostra <strong>Cancellazione da completare</strong>: connettiti a Internet e
-  riprova. Il nuovo tentativo verifica o completa la stessa richiesta, senza cancellare un
-  altro account.</li>
-</ol>
-<p>Se ti sei registrato ma non hai ancora completato il primo accesso, trovi
-<strong>Elimina account</strong> in fondo alla schermata in cui ti vengono chiesti nome e
-strumento.</p>
+
+<ol><li>Apri Jassie e accedi.</li><li>Vai su <strong>Impostazioni</strong> (l'ingranaggio in alto a destra nella schermata principale) e    scegli <strong>Elimina account</strong>.</li><li>Conferma. La richiesta parte subito ed è irreversibile quando il server la conferma.    Se la connessione si interrompe mentre aspettiamo la risposta, Jassie blocca le altre    funzioni e mostra <strong>Cancellazione da completare</strong>: connettiti a Internet e riprova. Il    nuovo tentativo verifica o completa la stessa richiesta, senza cancellare un altro account.</li></ol>
+
+<p>Se ti sei registrato ma non hai ancora completato il primo accesso, trovi <strong>Elimina account</strong> in fondo alla schermata in cui ti vengono chiesti nome e strumento.</p>
 
 <h2>Cosa viene eliminato</h2>
-<ul>
-  <li>L'account e le credenziali di accesso</li>
-  <li>Il profilo: nome, strumento, handle Instagram</li>
-  <li>Le frasi musicali generate per te</li>
-  <li>I risultati delle tue take, i punteggi, l'ELO e il livello di ogni modalità</li>
-  <li>I dati e le preferenze Jassie associati all'account e salvati sul dispositivo</li>
-</ul>
-<p>Non c'è nulla da eliminare per le <strong>registrazioni audio</strong>: non vengono
-conservate. Il servizio di analisi le riceve, riconosce le note e cancella il file subito
-dopo, anche quando l'analisi fallisce.</p>
+
+<ul><li>L'account e le credenziali di accesso</li><li>Il profilo: nome, strumento, handle Instagram</li><li>Le frasi musicali generate per te</li><li>I risultati delle tue take, i punteggi, l'ELO, le difficoltà sbloccate e il livello</li><li>Le segnalazioni diagnostiche e gli invii in sospeso</li><li>I dati e le preferenze Jassie associati all'account e salvati sul dispositivo</li></ul>
+
+<p>Non c'è nulla da eliminare per le <strong>registrazioni audio</strong>: non vengono conservate. Il servizio di analisi le riceve, riconosce le note e cancella il file subito dopo, anche quando l'analisi fallisce.</p>
 
 <h2>Cosa non viene eliminato automaticamente</h2>
-<p>Le <strong>scelte pubblicitarie memorizzate sul dispositivo da Google UMP</strong> non
-sono legate all'account Jassie e non vengono azzerate quando elimini l'account. Restano
-valide per quel dispositivo finché UMP non le fa scadere o aggiornare; quando UMP lo
-richiede, puoi modificarle da <strong>Impostazioni → Preferenze annunci</strong>. Jassie
-non usa <code>ConsentInformation.reset()</code> in produzione: Google lo documenta come
-strumento di test.</p>
-<p>La release Android <code>0.6.0 (7)</code> non invia nuovi eventi statistici a PostHog.
-Gli <strong>eventi statistici d'uso eventualmente già inviati da build precedenti
-abilitate</strong> restano presso PostHog (Unione Europea) secondo i suoi tempi di
-ritenzione. Sono legati a un codice interno e non contengono nome, email o testo libero.
-Per farli rimuovere, scrivici.</p>
-<p>Le <strong>copie di sicurezza del database</strong> le tiene il nostro fornitore di
-infrastruttura (Supabase, Irlanda) come parte del servizio e si rinnovano a rotazione: i dati
-eliminati spariscono anche da lì man mano che quelle copie vengono sostituite. Noi non ne
-conserviamo altre e non ne estraiamo nulla.</p>
-<p>Il <strong>registro tecnico degli accessi</strong> del servizio di autenticazione
-(Supabase) tiene traccia di operazioni come login, logout e richieste di reimpostazione della
-password, e può contenere l'indirizzo email con cui erano state fatte. Serve a diagnosticare
-abusi e guasti, non lo consultiamo per altro, e la cancellazione dell'account non lo svuota.
-Se vuoi che venga rimosso anche quello, scrivici.</p>
+
+<p>La versione senza pubblicità non legge più eventuali preferenze pubblicitarie native lasciate da versioni precedenti. Questi residui per dispositivo non sono associati all'account Jassie e non vengono azzerati dalla sua cancellazione.</p>
+
+<p>Le build attuali non inviano nuovi eventi statistici a PostHog. Gli <strong>eventi statistici d'uso eventualmente già inviati da build precedenti abilitate</strong> restano presso PostHog (Unione Europea) secondo i suoi tempi di ritenzione. Sono legati a un codice interno e non contengono nome, email o testo libero. Per farli rimuovere, scrivici.</p>
+
+<p>Le <strong>copie di sicurezza del database</strong> le tiene il nostro fornitore di infrastruttura (Supabase, Irlanda) come parte del servizio, e si rinnovano a rotazione: i dati eliminati spariscono anche da lì man mano che quelle copie vengono sostituite. Noi non ne conserviamo altre e non ne estraiamo nulla.</p>
+
+<p>Il <strong>registro tecnico degli accessi</strong> del servizio di autenticazione (sempre Supabase) tiene traccia di operazioni come login, logout e richieste di reimpostazione della password, e può contenere l'indirizzo email con cui erano state fatte. Serve a diagnosticare abusi e guasti, non lo consultiamo per altro, e la cancellazione dell'account non lo svuota. Se vuoi che venga rimosso anche quello, scrivici.</p>
 
 <h2>Se non riesci più ad accedere</h2>
-<p>Scrivi a <a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>
-dall'indirizzo email con cui ti sei registrato, chiedendo l'eliminazione dell'account.
-Rispondiamo entro 30 giorni.</p>
+
+<p>Scrivi a <strong>cesaranofrancescomain@gmail.com</strong> dall'indirizzo email con cui ti sei registrato, chiedendo l'eliminazione dell'account. Rispondiamo entro 30 giorni.</p>
 
 <h2>Chi tratta i tuoi dati</h2>
-<p>Francesco Cesarano, Strada Statale 145 n. 97, 80045 Pompei (NA), Italia —
-<a href="mailto:cesaranofrancescomain@gmail.com">cesaranofrancescomain@gmail.com</a>.</p>
-<p><a href="./">Informativa privacy completa</a>.</p>
 
-<!--
-Nota tecnica per il repository: il journal crash-safe di cancellazione vive nella directory
-owner-scoped `account_deletion_journal/`. Android la esclude sia dal Full Backup pre-31 sia
-da cloud backup e device transfer API 31+, per evitare che una richiesta vecchia risorga su
-una nuova installazione. iOS non offre a Dart un equivalente verificabile di
-`URLResourceKey.isExcludedFromBackupKey`: prima di distribuire questo journal su iOS serve
-un follow-up nativo e il relativo test; non dedurre la copertura iOS dalle regole Android.
--->
+<p>Francesco Cesarano, Strada Statale 145 n. 97, 80045 Pompei (NA), Italia — cesaranofrancescomain@gmail.com. Informativa privacy completa: <a href="https://francescomain.github.io/jassie-legal/">Informativa privacy di Jassie</a></p>
 
 <footer>Jassie — Jazz Adaptive Study System</footer>
 </main>
